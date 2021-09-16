@@ -1,0 +1,50 @@
+body {
+  margin: 0px;
+  padding: 5px;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: lightskyblue;
+  background-color: lightgreen;
+}
+.card {
+  width: 100%;
+  border-radius: 5px;
+  background-color: lightskyblue;
+  background-color: limegreen;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  /* box-shadow: 0 0 3px 3px rgba(0,0,0,0.1); */
+}
+.basic-grid {
+  display: grid;
+  gap: 5px;
+
+  /* 1. Too much repition */
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+
+  /* 2. Cleaner code, but each column is too thin */
+  grid-template-columns: repeat(12, 1fr);
+
+  /* 3. Set min-width of 240px for each column */
+  /* But, this overflows on x-axis*/
+  /* We need to get the items on a new row when there is no more space*/
+  grid-template-columns: repeat(12, minmax(240px, 1fr));
+
+  /* 4. Final: implicit grid */
+  /* Let the algorithm figure out the number of rows/columns */
+  /* auto-fit tells the grid to calculate the rows and cols on the fly */
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+
+  /* 5. There is aslo auto-fill */
+  /* This will create additional columns when there is extra space */
+  /* Can leave extra space at the end */
+  /* But auto-fit will expand all of its children to take up all available space */
+}
+.basic-grid-autofill {
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+}
+.basic-grid-autofit {
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
